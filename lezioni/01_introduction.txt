@@ -1,0 +1,46 @@
+170224
+
+Paradima della object-oriented
+|| Problema -> modello -> metodo -> implementazione -> risultati ||
+modello discreto/continuo
+metodo numerico/simbolico
+
+BEL LIBRO: Practical C++ Programming
+COMPRARE E TENERE SULLA SCRIVANIA Numerical Recipes 
+OTTIMO LIBRO, DIFFICILE! C++ Programming Language di Stroustroup o come si chiama
+
+Non scrivere grafica nei programmi, output di tabelle!!
+
+g++ __.cc -o __
+
+Variabili d'ambiente: 
+> env 
+fa vedere quali sono
+> env | grep PATH
+Prompt del sistema operativo: PS1
+
+.bash_profile
+  PATH=$PATH:.:$HOME/BIN:$HOME/script
+  BASH_ENV=$HOME/.bashrc
+  PGPLOT_DIR=/usr/users/docenti/nanni/pg/lib/pgplot
+  PGPLOT_DEV=/XWINDOW
+  export USERNAME BASH_ENV PATH
+  export PGPLOT_DIR PGPLOT_DIR PGPLOT_DEV
+
+
+
+.bashrc per gli alias
+    alias e='emacs -geometry 81x47'
+    alias home='cd $HOME'
+    alias dir='dir -l'
+    alias gzp2='/usr/users/docenti/nanni/pg/gzp2'
+
+source ~/.bash_profile
+source ~/.bashrc
+
+VARIABILI PROTETTE
+
+
+
+
+
