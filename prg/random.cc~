@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+  int seed = time(NULL);
+  srand(seed);
+  srand48(seed);
+
+  cout << setw(20) << left << "rand" << "srand";
+
+  for(int i=0; i<20; i++){
+    cout << setw(20) << left << rand() << drand48() << endl;
+  }
+
+  return 0;
+}
+    

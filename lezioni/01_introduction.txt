@@ -41,6 +41,27 @@ source ~/.bashrc
 VARIABILI PROTETTE
 
 
+NUMERI CASUALI
+/( X_(i+1) = (qX_i + c) \mathrm{mod}(M) \)
+Algoritmo congruente, genera solo numeri interi
+rand() fa questo.
+drand48() genera numeri tra 0 e 1 [48 non e' il seed!)
+
+Ma noi vorremmo irripetibilita'
+#include<cstdlib>
+int seed = time(NULL); 
+srand(seed);   -> rand()
+srand48(seed);  -> drand48()
+
+
+
+
+
+
+
+
+
+
 
 
 

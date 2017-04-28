@@ -1,0 +1,20 @@
+/* strange_calculator.cc
+ * this program acts like a normal calculator, but summing from left to right
+ * es. 3+4*5 = 35
+ */
+#include<iostream>
+
+using namespace std;
+
+
+
+
+int main()
+{
+  char * str[30];
+  cin >> str;
+  cout << str;
+
+
+  return 0;
+}
