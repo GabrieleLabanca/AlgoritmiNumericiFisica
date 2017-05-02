@@ -53,11 +53,13 @@ int seed = time(NULL);
 srand(seed);   -> rand()
 srand48(seed);  -> drand48()
 
+Somma di 12 variabili casuali ha media = somma delle medie = 6; scarto = somma quadratica degli scarti = 6;
 
 
+170502
 
-
-
+Calcolare P(S) dove S e' la somma del risultato del lancio di due dadi. 
+Metodo MONTECARLO: nmu 
 
 
 

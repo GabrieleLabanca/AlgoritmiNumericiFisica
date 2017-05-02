@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+
+
+using namespace std;
+
+int main()
+{
+  int seed = time(NULL);
+
+  cout << "Generate " << N << " couples of dice numbers:"
+
+
+
+
+
+
+
+
+
+
+
+  return 0;
+}

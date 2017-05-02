@@ -36,6 +36,21 @@ int main()
        << "\nscarto: " << sigma(arr,N)
        << endl;
 
+  cout << "Calcolo media e scarto su somma di 12 valori casuali\n";
+  float * arr12 =  new float[N];
+  for(int i=0; i<N; i++){
+    arr12[i] = 0;
+    for(int j=0; j<12; j++){
+      arr12[i] += drand48();
+    }
+  }
+  cout << "media: " << mean(arr12,N)
+       << "\nscarto: " << sigma(arr12,N) << endl;
+    
+ 
+ 
+  
+
    return 0;
 }
     
