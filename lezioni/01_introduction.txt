@@ -59,7 +59,15 @@ Somma di 12 variabili casuali ha media = somma delle medie = 6; scarto = somma q
 170502
 
 Calcolare P(S) dove S e' la somma del risultato del lancio di due dadi. 
-Metodo MONTECARLO: nmu 
+Metodo MONTECARLO
+
+Grafica:
+- Grace -> xmgrace
+- Gnuplot
+- gzp2
+
+GZP2
+
 
 
 
