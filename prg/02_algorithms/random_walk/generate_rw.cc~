@@ -1,0 +1,33 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/include/rnd_generators.hh"
+
+using namespace std;
+
+int main()
+{
+  cerr << "Generate a random series of coordinates\n";
+  int N = 100;
+
+  randomize48();
+  int x, y, norm;
+
+  for(int i=0; i<N; i++){
+    x = rnd_uni(-1,1);
+    y = rnd_uni(-1,1);
+    norm = x*x + y*y;
+    x /= norm;
+    y /= norm;
+    cout << setw(10) << left << x << y << endl;
+
+  }
+
+
+
+
+
+
+
+  return 0;
+}

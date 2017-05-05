@@ -1,0 +1,117 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+void randomize48()
+{
+  int iseed = time(NULL);
+  srand48(iseed);
+}
+
+double rnd_uni (double x1, double x2)
+{
+  double u1=drand48();
+  return x1+u1*(x2-x1);
+}
+
+double rnd_exp (double flam)
+{
+  double u1=drand48();
+  return -log(1.-u1)/flam;
+}
+
+double rnd_gauss (double mu, double sigma)
+// Box-Muller algoritm
+//
+// rho2=-2.*log(1.-drand48())       
+// rho=sqrt(rho2)                  // rho   exponential
+// theta=2.*3.14159265*drand48()   // theta uniform [0,2PI]
+// g1=mu+sigma*rho*cos(theta)
+// g2=mu+sigma*rho*sen(theta)
+//
+// polar form of the above algoritm
+//
+{
+  // Static 
+  // the variables, so declared, after beeing initialized, 
+  // remain in memory until the end of the program.
+  static double x1,x2;
+  static int call = 0;
+  // to save the a call
+  if (call == 1)
+    {
+      call = 0;
+      return (mu + sigma * x2);
+    }
+ 
+  double u1,u2;
+  double w;
+  do
+    {
+      u1 = -1. + drand48() * 2;
+      u2 = -1. + drand48() * 2;
+      w = u1*u1 + u2*u2;
+    }
+  while (w >= 1. || w == 0.);
+ 
+  double mult = sqrt (-2. * log (w)/w);
+  x1 = u1 * mult;
+  x2 = u2 * mult;
+ 
+  call = 1;
+  return (mu + sigma * x1);
+}
+
+int rnd_poisson (double flam)
+// D. Knuth algoritm
+// it mimic the radioacttive decay (i.e. how many decay accour in a given
+// time interval dt)
+//
+{
+  double plim=exp(-flam);
+
+  double prob=1.;
+  int k=0;
+  do
+    {
+      k=k+1;
+      double u1=drand48();
+      prob=prob*u1;
+    }while (prob>plim);
+
+  return k-1;
+}
+
+int main( ) 
+{
+  using namespace std;
+
+  cout << " Enter mean and std " << endl;
+  double fm, std;
+  cin >> fm >>std;
+  cout << " Enter number of calls " << endl;
+  int ntotal;
+  cin >> ntotal;
+
+  int cnt = 0;
+  double h[51];
+  for(int i=0; i<51 ;i++) {h[i]=0.;}
+  double  xmax=5.;
+  double dx=xmax/50;
+  randomize48();
+  for (int i = 0; i < ntotal; i++) 
+    {      
+      double xx=rnd_gauss(fm,std);
+      //      double xx=rnd_exp(1.);
+      //      double xx=rnd_uni(1.,4.);
+      //      int ii=rnd_poisson(0.2);
+      int ii=(int)(xx/dx)+1;
+      if(ii <=50) h[ii]=h[ii]+1.;
+    }
+  //  dx=1.;
+  for(int i=0;i<=50;i++)
+    {
+      cout << dx*i << "   " << h[i]/ntotal/dx << endl;
+    }
+  return 0;
+}

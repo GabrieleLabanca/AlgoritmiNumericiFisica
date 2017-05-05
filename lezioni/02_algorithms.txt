@@ -1,0 +1,48 @@
+170505
+
+RND_GENERATORS.CC
+Scaricare il programma 
+http://personalpages.to.infn.it/~nanni/fisica_numerica/listing/rnd_generators.cc
+metterlo nella directory include/ e fare le seguenti cose:
+PRIMO FILE
+- TOGLIERE IL MAIN
+- Rinominare .hh
+SECONDO FILE
+- togliere funzioni, includere  (#include "percorso/rnd_generators.hh")
+
+Provare a far funzionare il programma rnd_generators.cc
+
+DECADIMENTI
+Dall'assunzione che il numero di particelle che decadono nell' u. di tempo sia proporzionale al numero stesso di particelle:
+\( P = \frac{\Delta N(t}{N(t)} = - \lambda\Delta t \)
+Equazione alle differenze finite -> si fa il limite
+\( N(t) =  N_0 e^{-\lambda t} =  N_0 e^{-\frac{t}{\tau}} \)
+Ma se non faccio il limite, non posso risolvere analiticamente. 
+PROCESSO STOCASTICO: aumentando N_0 mi avvicino alla soluzione continua?
+Programma: nuclear.cc
+in input: N0,dt (prob di decadimento fissata)
+Requisiti del programma:
+ - incrociare N/N0=1/2 a log2
+ - per N0 sufficientemente grande, le curve devono sovrapporsi
+ - si avvicina a exp
+
+
+RANDOM WALK
+distanza dalla posizione iniziale = R^2
+[dimostrazione sulle slides] R^2 = sqrt(N) r_{rms}
+dove r_{rms} e' la root mean squared dell'ampiezza del passo
+
+generare cammino random 2D
+5 possibilita'
+ - theta a caso, poi riconverto in x, y con raggio = 1
+ - grid NSOE (pt cardinale scelto a caso)
+ - scegliere x,y in 0,1 e normalizzare a 1 lo step
+ - scegliere x, poi y=sqrt(1-x^2)
+ - scegliere nell'intervallo (-sqrt2,+sqrt2) [corretto SOLO IN MEDIA!!]
+
+
+
+
+
+
+

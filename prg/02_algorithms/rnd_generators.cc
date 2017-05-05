@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+
+#include "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/include/prova.h"
+#include "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/include/rnd_generators.hh"
+
+
+int main( ) 
+{
+  using namespace std;
+
+  cout << " Enter mean and std " << endl;
+  double fm, std;
+  cin >> fm >>std;
+  cout << " Enter number of calls " << endl;
+  int ntotal;
+  cin >> ntotal;
+
+  int cnt = 0;
+  double h[51];
+  for(int i=0; i<51 ;i++) {h[i]=0.;}
+  double  xmax=5.;
+  double dx=xmax/50;
+  randomize48();
+  for (int i = 0; i < ntotal; i++) 
+    {      
+      double xx=rnd_gauss(fm,std);
+      //      double xx=rnd_exp(1.);
+      //      double xx=rnd_uni(1.,4.);
+      //      int ii=rnd_poisson(0.2);
+      int ii=(int)(xx/dx)+1;
+      if(ii <=50) h[ii]=h[ii]+1.;
+    }
+  //  dx=1.;
+  for(int i=0;i<=50;i++)
+    {
+      cout << dx*i << "   " << h[i]/ntotal/dx << endl;
+    }
+  return 0;
+}
