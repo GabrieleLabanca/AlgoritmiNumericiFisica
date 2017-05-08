@@ -1,0 +1,3 @@
+g++ pi_rej.cc -o pi_rej; echo "100000 1000 1000" | pi_rej > pi_histo.dat
+
+gnuplot plot_pi_histo.gp

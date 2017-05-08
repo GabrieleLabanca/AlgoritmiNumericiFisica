@@ -1,4 +1,4 @@
-170505
+70505
 
 RND_GENERATORS.CC
 Scaricare il programma 
@@ -12,7 +12,7 @@ SECONDO FILE
 
 Provare a far funzionare il programma rnd_generators.cc
 
-DECADIMENTI
+[DECADIMENTI]
 Dall'assunzione che il numero di particelle che decadono nell' u. di tempo sia proporzionale al numero stesso di particelle:
 \( P = \frac{\Delta N(t}{N(t)} = - \lambda\Delta t \)
 Equazione alle differenze finite -> si fa il limite
@@ -27,22 +27,38 @@ Requisiti del programma:
  - si avvicina a exp
 
 
-RANDOM WALK
-distanza dalla posizione iniziale = R^2
-[dimostrazione sulle slides] R^2 = sqrt(N) r_{rms}
+[RANDOM WALK]
+Distanza dalla posizione iniziale = R^2
+\\dimostrazione sulle slides\\ R^2 = sqrt(N) r_{rms}
 dove r_{rms} e' la root mean squared dell'ampiezza del passo
 
 generare cammino random 2D
+[!]
 5 possibilita'
  - theta a caso, poi riconverto in x, y con raggio = 1
  - grid NSOE (pt cardinale scelto a caso)
  - scegliere x,y in 0,1 e normalizzare a 1 lo step
- - scegliere x, poi y=sqrt(1-x^2)
- - scegliere nell'intervallo (-sqrt2,+sqrt2) [corretto SOLO IN MEDIA!!]
+ - scegliere x, poi y=sqrt(1-x^2) //anche il segno va randomizzato!//
+ - scegliere nell'intervallo (-sqrt2,+sqrt2) //corretto SOLO IN MEDIA!!//
 
 
+170508
+[INTEGRALI BY REJECTION]
+Analogo di lanciare sassolini: conto solo quelli che cadono all'interno del laghetto e divido per il numero totale.
+\( \frac{N_{hit}}{N_{hit}+N_{miss}} \)
 
-
+//calcolo di pi//
+genero x,y tra 0 e 1 e cerco che verifichino la condizione:
+\( x^2+y^2 > R^2 \)
+Qui 
+\( \frac{N_{hit}}{N_{hit}+N_{miss}} = \pi/4 \)
+// impiega molto tempo a convergere! //
+ 
+[ISTOGRAMMI]
+Modo efficace:
+array largo numero di intervalli
+++array.at(int(|offset-x|/width)) mi da' l'istogramma
+dovro' poi normalizzare su N_campioni 
 
 
 
