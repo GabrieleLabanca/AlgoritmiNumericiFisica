@@ -7,6 +7,13 @@ using namespace std;
 
 float generate_pi(int,int=10);
 
+struct entry
+{
+  float meas;
+  float sum;
+  float sumsq;
+};
+
 int main()
 {
 
@@ -53,43 +60,41 @@ int main()
 
 
 
-
   return 0;
 }
 
-float generate_pi(int throws, int trials)
+en generate_pi(int throws,)
 {
+  entry
+  
   float x;
   float y;
 
   int hit=0;
 
-  
-  float mean = 0;
-  float temp = 0;
-  //float sumsq = 0;
-  //float std =0;;
-  
-  //for(int j=0; j<trials; j++){*/
-    for(int i=0; i<throws; i++){
-      
-      x = rnd_uni(0,1);
-      y = rnd_uni(0,1);
-      if( x*x+y*y < 1 ) hit++;
-      
-    }
-    
-    temp =  4*float(hit)/throws;
-    
-    hit = 0;
-        
-    mean  += temp;
-    //sumsq += temp*temp;
-    //}
+  //float mean = 0;
+  //float temp = 0;
 
-    //mean /= trials;
-  //sumsq /= n_trials;
-  //sumsq /= sqrt(-(mean*mean - sumsq));
+  
+  for(int i=0; i<throws; i++){
+    
+    x = rnd_uni(0,1);
+    y = rnd_uni(0,1);
+    if( x*x+y*y < 1 ) hit++;
+    
+  }
+  
+  temp =  4*float(hit)/throws;
+  
+  hit = 0;
+  
+  mean  += temp;
+  sumsq += temp*temp;
+  //}
+  
+  mean /= trials;
+  sumsq /= n_trials;
+  sumsq /= sqrt(-(mean*mean - sumsq));
 
   return mean;
 }

@@ -1,4 +1,4 @@
-70505
+170505
 
 RND_GENERATORS.CC
 Scaricare il programma 
@@ -61,4 +61,10 @@ array largo numero di intervalli
 dovro' poi normalizzare su N_campioni 
 
 
-
+170508
+[MONTE CARLO]
+Teorema della media
+\( I(a,b) = (b-a)<f> \)
+quindi noto il valor medio di <f>, grazie all'hit or miss, si trova I
+Converge come 1/sqrt(N) e non dipende dalla dimensionalita' dell'integrale
+E' un buon metodo di integrazione se la dimensione d>3
