@@ -29,7 +29,7 @@ Requisiti del programma:
 
 [RANDOM WALK]
 Distanza dalla posizione iniziale = R^2
-\\dimostrazione sulle slides\\ R^2 = sqrt(N) r_{rms}
+//dimostrazione sulle slides// R^2 = sqrt(N) r_{rms}
 dove r_{rms} e' la root mean squared dell'ampiezza del passo
 
 generare cammino random 2D
@@ -68,3 +68,73 @@ Teorema della media
 quindi noto il valor medio di <f>, grazie all'hit or miss, si trova I
 Converge come 1/sqrt(N) e non dipende dalla dimensionalita' dell'integrale
 E' un buon metodo di integrazione se la dimensione d>3
+
+
+170512
+[RAPPRESENTAZIONE DEI NUMERI]
+c++:
+- interi short, int (max 2^32)
+- virgola float(32bit), double (64bit) 
+// attenzione al range: OVERFLOW //
+Mantissa|Base|esponente|(E)bias
+\( MB^(e-E) \)
+convenzione IEEE
+bit
+| e |sgn|mantissa|
+0   7   8        31
+-8 bit per e:
+  NON e <= 2^7, ma si usa bias: e <= 2^8
+-23 bit per M
+
+Numeri "sensati" fino alla n-esima cifra!
+x = x* + delta
+delta = \\rounding error\\
+[propagazione dell'errore]
+//maggiori problemi: somme tra numeri di diverso ordine, differenze ...//
+R + deltaR; \\deltaR\\ \propto epsilon_n(errore medio)*sqrt(N) (random walk){a volte invece propto N}
+(esempio) 1-cos(x) per x<10^-3 e' quasi zero, ha un numero di cifre significative molto piu' basso; scrivo invece sin^2/(1+cos^2) non perdo cifre significative!
+(esempio) ax^2+bx+c=0 ha soluzione con differenza e da' problemi. Allora q=-1/2(b+sgn(b)sqrt(b^2-4ac) ) non ha piu' differenze; x1 = q/a x2=c/q x1x2=c/a
+[Machine accuracy]
+il piu' piccolo per cui
+1 + \epsilon_n \neq 1
+//non si usano numeri reali nei loop!!//
+//non si confrontano (==) due numeri reali, ma si fa la loro differenza minore di una accuratezza che scelgo!!//
+Registry di memoria (es dove faccio le operazioni di controllo del while; in generale dove non assegno il risultato a una variabile) hanno precisione molto piu' alta!
+
+[Output di numeri]
+#include <iomanip>
+setiosflags(ios::scientific)
+setw(30)
+setprecision(20)
+fegetexpect, feenableexcept // vale solo sul primo numero successivo //
+scrivere 1., 2., ... quando si divide
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

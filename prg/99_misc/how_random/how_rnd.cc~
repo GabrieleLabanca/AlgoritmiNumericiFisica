@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+  int seed = time(NULL);
+  srand48(seed);
+
+  int N;
+  cerr << "Insert N of throws\n";
+  cin >> N;
+
+  fstream raw;
+  fstream histo;
+  int n_intervals = 20;
+  float * h_array = new float[20];
+
+  raw.open("raw_data.dat");
+
+  float t;
+  for(int i=0; i<N; i++){
+    t = drand48();
+    raw << setw(10) << left << i << t << endl;
+    ++h_array[int(t*20)];
+  }
+
+  histo.open("histo_data.dat");
+  for(int i=0; i<n_intervals; i++){
+    histo << setw(10) << left << i << h_array[t] << endl;
+  }
+  
+  return 0;
+}
