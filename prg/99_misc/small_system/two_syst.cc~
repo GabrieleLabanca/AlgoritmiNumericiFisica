@@ -1,0 +1,57 @@
+#include <iostream>
+
+class animal
+{
+public:
+  int population;
+  const float reproduction;
+  const float mortality;
+  const float strength;
+};
+
+class animal::prey
+{
+public:
+  void season(predator& a)
+  {
+    population *= (reproduction - mortality);
+    population -= a.population / strength * a.strength;
+    return;
+  }
+};
+
+class animal::predator
+{
+public:
+  void season(prey& a)
+  {
+    population *= (reproduction - mortality);
+    population += a.population * strength / a. strength:
+  }
+};
+
+
+int main()
+{
+
+  prey cats;
+  cats.population = 100;
+  cats.reproduction = 0.1;
+  cats.mortality = 0.1;
+  cats.strength = 0.3;
+
+  predator mice;
+  mice.population = 100;
+  mice.reproduction = 0.4;
+  mice.mortality = 0.4;
+  mice.strength = 0.1;
+
+  for(int i=0; i<100; i++){
+    cats.season(mice);
+    mice.season(cats);
+    cout << mice.population << " " << cats.population << endl;
+  }
+   
+
+
+     

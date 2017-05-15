@@ -1,0 +1,13 @@
+g++ bessel.cc -o bessel
+alpha=00
+precision=0.1
+export filedata="bes"$alpha".dat"
+export fileplot="bes"$alpha".png"
+echo $filedata
+echo $fileplot
+
+echo "$alpha $precision" | bessel > $filedata
+
+echo "__________________________________"
+echo "Call GNUPLOT"
+gnuplot -e "infile=$filedata" plot_bessel.gp

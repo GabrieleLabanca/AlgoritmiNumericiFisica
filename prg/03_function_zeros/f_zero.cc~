@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+//#include "zero_lib.h"
+
+using namespace std;
+
+
+void bracketing(double (*f)(double x), double &x1, double &x2, int ifail)
+{
+  int N = 100;
+  double h = (x2 - x1)/N;
+  double f1, f2, fprod;
+  for(int i=0; i<N; i++){
+    f1 = f(x1);
+    f2 = f(x2);
+    fprod = f1*f2;
+    cerr << fprod << endl;
+    if(fprod < 0) break;
+    x1 += h;
+  }
+  return;
+}
+
+
+
+double fexp_m(double x)
+{
+  return exp(-x) - x;
+}
+
+double fexp_p(double x)
+{
+  return exp(x) - x;
+}
+
+int main()
+{
+  double x1 = -2.0;
+  double x2 =  2.0;
+  bracketing(fexp_p, x1, x2, 0);
+  cerr << setw(10) << left << x1 << x2 << endl;
+
+
+
+
+
+
+  return 0;
+}

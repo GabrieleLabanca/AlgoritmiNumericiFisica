@@ -109,6 +109,15 @@ setprecision(20)
 fegetexpect, feenableexcept // vale solo sul primo numero successivo //
 scrivere 1., 2., ... quando si divide
 
+[O] manca parte perche' sono andato via prima
+
+170515
+[funzioni di Bessel ricorsive]
+J_a(x) = sum^inf (-1)^n/n!Gamma(m+a+1) * (x/2)^(2m+a)
+2a/x * Z_a(x) = Z_{a-1}(x) + Z_{a+1}(x)
+
+
+http://www.ams.org/journals/mcom/1959-13-066/S0025-5718-1959-0105794-5/S0025-5718-1959-0105794-5.pdf p.103
 
 
 

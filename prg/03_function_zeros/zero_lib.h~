@@ -1,0 +1,6 @@
+void bracketing(double * f(double), double &x1, double &x2, int ifail)
+{
+  double h = (x2 - x1)/1000;
+  while( f(x1++)*f(x2) > 0);
+  return;
+}

@@ -1,0 +1,29 @@
+170515
+[DERIVATA]
+Funzione nota nei punti xi = x0 + i*h
+h = \\meshsize\\
+sviluppo in serie di Taylor => f(x+h) - f(x-h) = 2hf'(x)
+f- - f+ = 2hf'_0
+f'_0 = 1/2h (f- - f+) \\formula a tre punti\\ giusta fino a parabola
+//usare piu' punti e' sconsigliato!//
+f'_0 = 1/h (f+ - f0) \\forward\\
+f'_0 = 1/h (f0 - f-) \\backward\\
+//si fanno grossi errori//
+f+ + f- = 2f0 + h^2 f''_0
+f''_0 = 1/h^2(f+ - 2f0 + f-) \\derivata seconda\\
+
+[ZERI DI UNA FUNZIONE]
+\\bracketing\\ intervallo tale che f(x1)*f(x2) < 0 contiene uno zero
+|f(x0)| < epsilon
+[routine del bracketing]
+per trovare punti che soddisfano il bracketing \\poor man bracketing\\ 
+mi interessa lo zero in un intervallo: voglio rimpicciolirlo
+definisco h=(x2-x2)/nsteps
+per ogni step i controllo il segno di f(x+i*h) fino a che non trovo condizione di bracketing
+[bracketing di Knuth]
+si sceglie la direzione in cui la funzione diminuisce
+si avanza di x2 = x1 + alpha (x2-x1)
+dove \\alpha = 1.65\\
+
+
+

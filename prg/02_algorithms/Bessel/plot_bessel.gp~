@@ -1,0 +1,6 @@
+load /usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/prg/standard_style.gnu
+
+set terminal pngcairo
+set output outfile
+
+plot infile u 1:2 w p 
