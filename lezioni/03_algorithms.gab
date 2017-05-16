@@ -25,5 +25,33 @@ si sceglie la direzione in cui la funzione diminuisce
 si avanza di x2 = x1 + alpha (x2-x1)
 dove \\alpha = 1.65\\
 
+[bisezione]
+Delta = x2 - x1
+valuto in x1 e `x1+Delta/2: se il prodotto
+- >0 x1 = x1+Delta/2
+- <0 Delta = Delta/2
+Interrompo quando Delta < accuratezza dx
+Voglio //evitare asintoti verticali//
+zbisec(double (*f)(double x), x1, x2, accuracy x, accuracy y, ifail) 
+x1,x2 non &x1, &x2
+\\convergenza logaritmica\\ epsilon_n = epsilon_0/2^n => n=log_2(epsilon_0/epsilon_n)
+
+[regula falsi]
+in qualche modo 
+- (xmedio-x1)   \propto |f(x1)|
+- (x2 - xmedio) \propto |f(x2)| 
+divido ambo i membri assumendo ~
+x3*(f2-f1) = f2x1 - f1x2
+\\ x3 = (f2*x1 - f1*x2)/(f2-f1) \\ velocizza: x3 al posto di xmedio
+
+
+
+
+
+
+
+
+
+
 
 
