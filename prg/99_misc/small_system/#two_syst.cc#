@@ -31,7 +31,7 @@ public:
     population -= 0.01 * a->get_pop();
     */
     population *= (1 + this->reproduction /*- this->mortality*/);
-    population -= a->get_pop()*0.2  / (this->strength / a->get_str() );
+    population -= a->get_pop()*0.1  / (this->strength / a->get_str() );
     
     if(population < 0) population = 0;
     return;

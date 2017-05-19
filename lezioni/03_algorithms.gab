@@ -15,7 +15,7 @@ f''_0 = 1/h^2(f+ - 2f0 + f-) \\derivata seconda\\
 [ZERI DI UNA FUNZIONE]
 \\bracketing\\ intervallo tale che f(x1)*f(x2) < 0 contiene uno zero
 |f(x0)| < epsilon
-[routine del bracketing]
+[poor man bracketing]
 per trovare punti che soddisfano il bracketing \\poor man bracketing\\ 
 mi interessa lo zero in un intervallo: voglio rimpicciolirlo
 definisco h=(x2-x2)/nsteps
@@ -44,11 +44,41 @@ divido ambo i membri assumendo ~
 x3*(f2-f1) = f2x1 - f1x2
 \\ x3 = (f2*x1 - f1*x2)/(f2-f1) \\ velocizza: x3 al posto di xmedio
 
+170519
+[algoritmo di Newton]
+//da usarsi quando siamo gia' vicino allo zero//
+poniamo di avere una stima dello zero x_n: tracciamo la tangente alla curva nel punto x_n, prendiamo come x_{n+1} l'intersezione di questa retta con l'asse x
+y-y_n = m(x-x_n)
+m=f'(x_n)
+-f(x_n) = f'(x_n)(x_{n+1} - x_n) 
+x_{n+1} = x_n - f(x_n)/f'(x_n)
+converge molto rapidamente, ma dobbiamo conoscere la derivata prima:
+//due puntatori// a f e f' 
+//si usa la derivata analitica!//
+z e' lo zero, epsilon_n = |z - x_n| 
+epsilon_{n+1} = epsilon_n - f_n/f'_n
+f_n = f(z + epsilon_n) = f(z) + epsilon_n f'(z) + epsilon_n^2 / 2 f''(z)
+f'_n = f'(z) + epsilon_n f''(z) + ...
+f_n/f'_n = epsilon(n) (1+epsilon_n / 2 f''/f' ) / (1+ epsilon_n f''/f')
+         = (1+epsilon_n/2 f''/f')(1-epsilon_n f''/f')
+         = epsilon_n(1-epsilon_n f''/f' + epsilon_n / 2 f''/f' + ...)
+         = epsilon_n(1 - epsilon_n f''/(2f'))
+epsilon_{n+1} = epsilon_n - epsilon_n + epsilon_n^2 f''/f'
+//CONVERGENZA QUADRATICA//
+Verifica: se x_{n+1} esce dall'intervallo di bracketing, EXIT
 
 
+Schema se so la derivata:
+- bracketing 
+- call con bisezione con accuratezza lasca=(0.001) 
+- call con Newton: accuratezza migliora di un fattore 1000
 
+Schema se non so la derivata:
+- bracketing
+- regula falsi
 
-
+[Polinomi di Legendre]
+formula ricorsiva
 
 
 
