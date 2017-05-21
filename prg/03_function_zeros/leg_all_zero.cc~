@@ -1,0 +1,105 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <cstdlib>
+#include <vector>
+//#include "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/include/lib_zero.h"
+//#include "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/include/lib_special.h"
+#include "../../include/lib_zero.h"
+#include "../../include/lib_special.h"
+
+
+
+
+using namespace std;
+
+int N_ORDER;
+
+double legendre_fixed(double x)
+{
+  return legendre(N_ORDER,x);
+}
+
+double d_legendre_fixed(double x)
+{
+  return d_legendre(N_ORDER,x);
+}
+
+double trial(double x)
+{
+  return x;
+}
+
+
+int main()
+{
+  double x1;
+  double x2;
+ 
+  double dx = 0.00001;
+  int N_division = 2/dx; 
+  
+
+  double x_acc, y_acc, x_zero;
+  cerr << "Insert desired accuracy in x and in f(x)\n";
+  cin >> x_acc >> y_acc;
+
+  int N_MAX;
+  cerr << "Insert maximum order of polinomials\n";
+  cin >> N_MAX;
+
+
+  vector< vector<double> > zeros;
+  zeros.resize(N_MAX);
+
+
+  
+  for(int j=0; j<N_division; j++){
+
+    x1 = -1 + (j) * dx; 
+    x2 = -1 + (j+1) * dx;
+
+
+    for(int io=0; io<N_MAX; io++){
+      N_ORDER = N_MAX;
+      int tot_fail;
+      int pm_fail;
+      poorman_bracketing(legendre_fixed, x1, x2, tot_fail);
+      pm_fail = tot_fail;
+      if(pm_fail == 1) {
+	continue;
+      }
+      
+      // exit if no zero found
+      if(tot_fail == 1){
+	cerr << "!no zero found!\n";
+      }
+      
+      x_zero = zero_bisection(legendre_fixed,x1,x2,0.001,0.001,tot_fail);
+      x_zero = zero_newton(legendre_fixed,d_legendre_fixed,x1,x2,x_zero,x_acc,y_acc,tot_fail);
+      cerr << "Zero of the function is in \n#### ";
+      cerr << fixed << setprecision(9) <<  x_zero << endl;
+    }
+  }
+  
+  // PLOT to check algorithm for Legendre polinomials
+  for(int i=-1000; i<1000; i++){
+    cout << i/1000.;
+    
+    for(int oi=0; oi<8; oi++){
+      N_ORDER = oi+1;      
+      
+      
+      cout << " "  << legendre_fixed(i/1000.);
+      
+    }
+    cout << endl;
+    
+  }
+  
+
+
+
+
+  return 0;
+}

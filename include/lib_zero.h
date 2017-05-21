@@ -47,6 +47,8 @@ void knuth_bracketing(double (*f)(double x), double &x1, double &x2, int &ifail)
     x2 += alpha*temp;
     f2 = (*f)(x2);
     fprod = f1*f2;
+ 
+
     if(fprod < 0){
       ifail = 0;
       break;
@@ -89,7 +91,7 @@ double zero_bisection( double (*f)(double x), double x1, double x2,
       xzero = xm; 
     	   
       ifail = 0;
-      cerr << "iterations : " << i << endl;
+      //cerr << "iterations : " << i << endl;
       return xzero;
       break;
     }
@@ -162,26 +164,34 @@ double zero_newton( double (*f)(double x), double (*f_der)(double x),
   double xold, xnew;
 
   xold = est0;
+     
   
   fold = f(xold);
   dfold = f_der(xold);
 
+  
+   
+
   for(int i=0; i<N; i++){
     xnew = xold - ( fold / dfold );
     //cerr << " xnew = " << setprecision(11) << xnew << endl;
-
+     
         
     fnew = f(xnew);
     
     
     deltax = xnew - xold;
     deltay = fnew - fold;
+    
+
+    
       
     xcheck = sqrt(deltax*deltax) < x_accuracy;
     ycheck = sqrt(deltay*deltay) < y_accuracy;
     if( xcheck or ycheck ){
       ifail = 0;
       return xnew;
+         
     }
 
     fold = fnew;
@@ -189,9 +199,10 @@ double zero_newton( double (*f)(double x), double (*f_der)(double x),
     //dfold = dfnew
     dfold = f_der(xnew);
     
-      
+
   }
   
+
   // fail: return the old value
   return xold;
 }

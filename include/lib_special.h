@@ -23,7 +23,9 @@ double d_legendre(int n, double x)
 {
   double y;
 
-  y = 1./(x*x - 1) * ( n*x*legendre(n,x) - n * legendre(n-1,x) );
+  if(n == 0) return y = 0;
+  else if(n == 1) return y = 0;
+  else  y = 1./(x*x - 1) * ( n*x*legendre(n,x) - n * legendre(n-1,x) );
 
   return y;
 }
