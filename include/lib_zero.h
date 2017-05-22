@@ -111,7 +111,6 @@ double zero_regulafalsi( double (*f)(double x), double x1, double x2,
   double deltax, deltay;
   double xm, xzero;
   f1 = (*f)(x1);
-  deltax = x2 - x1;
   xm = x2;
   
   for(int i=0; i<N; i++){
@@ -135,6 +134,7 @@ double zero_regulafalsi( double (*f)(double x), double x1, double x2,
       f1 = f2;
       //cerr << "x1 changed\n";
     }
+    deltax = x1 - xm;
     deltay = f1 - f2;
     ///*!!*/deltay = f2;
     xcheck = sqrt(deltax*deltax) < x_accuracy;
