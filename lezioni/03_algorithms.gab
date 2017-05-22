@@ -79,6 +79,47 @@ Schema se non so la derivata:
 
 [Polinomi di Legendre]
 formula ricorsiva
+si sceglie un dx in cui si e' sicuri di non trovare due zeri
+
+[esercizio]
+\\ f = 1/x - a   \\
+\\ f = 1/x^2 - a \\
+\\ f = x^2 - a   \\
+convergono velocemente, servono per il calcolo di 1/a, 1/sqrt(a), sqrt(a)
+
+[EQUAZIONE DI SHROEDINGER]
+-\frac{\bar(h)^2}{2m} \frac{d^2}{dx^2} \psi(x) + U(x) \psi(x) = E \psi(x)
+La risolviamo nel caso di una buca quadrata (-a,a), profonda -V0
+La buca definisce regione I(prima) II(nella buca) III(dopo)
+Funzioni pari:
+\psi_{II}(x) = A \cos(\alpha(x)) 
+\psi_{III}(x) = B e^{-\beta x}
+\alpha = \sqrt{ \frac{2m}{\bar{h}^2} (E + V0)  }
+\beta = \sqrt{\frac{2m}{\bar{h}^2}(-E) 
+Impongo continuita' di \psi e della derivata in (a)
+=>\\  \alpha \tan (\alpha a) = \beta \\
+Funzioni dispari:
+\\ \alpha \cotan (\alpha a) = \beta \\
+Ma attenzione!!! ha molto piu' senso trovare gli zeri di
+// \alpha \sin(\alpha a) - \beta \cos(\alpha a) = 0 // etc.
+
+//il valore del livello 0 (V0 - primo eigenvalue) si ha da dx*dp>hbar con dx=2a!!//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

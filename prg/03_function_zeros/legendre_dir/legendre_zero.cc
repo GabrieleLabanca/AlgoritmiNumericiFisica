@@ -22,6 +22,7 @@ double d_legendre_fixed(double x)
   return d_legendre(N_ORDER,x);
 }
 
+
 double trial(double x)
 {
   return x;
@@ -77,14 +78,7 @@ int main()
       cerr << "!no zero found!\n";
       //return 1;
     }
-    
-    
-    //cerr << "Bracketed interval:\n";
-    //cerr << setw(20) << left << x1 << x2 << endl;
-    
-    
-    
-   
+
     
     x_zero = zero_bisection(legendre_fixed,x1,x2,0.001,0.001,tot_fail);
     //x_zero = zero_regulafalsi(fexp_m,x1,x2,0.001,0.001,tot_fail);
@@ -107,8 +101,8 @@ int main()
     for(int oi=0; oi<8; oi++){
       N_ORDER = oi+1;      
       
-      
-      cout << " "  << legendre_fixed(i/1000.);
+      cout << " " << legendre_fixed(i/1000.);
+      //cout << " "  << legendre_fixed(i/1000.);
       
     }
     cout << endl;
