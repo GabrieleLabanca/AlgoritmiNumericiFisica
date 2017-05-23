@@ -1,0 +1,9 @@
+load "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/prg/00/standard_style.gnu"
+
+set terminal pngcairo
+
+set output "psi.png"
+
+# plot for [i=1:1000] 'data'.i.'.txt' using 1:2 title 'Flow '.i
+plot for[i=1:10] 'data_eig_even'.i.'.dat' u 1:2 w p title 'even '.i
+

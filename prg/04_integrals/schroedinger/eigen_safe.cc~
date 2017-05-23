@@ -1,9 +1,15 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <fstream>
+#include <string>
+#include <sstream>
 
-#include "../../../include/lib_zero.h"
-#include "../../../include/phys_constants.h"
+#include "lib_zero.h"
+#include "phys_constants.h"
+#include "quadrature.h"
+
+using namespace std;
 
 
 double eig_even(double E, double V0, double a)
@@ -33,7 +39,6 @@ double eig_even_d(double E, double V0, double a)
 
 double eig_odd_d(double E, double V0, double a)
 {
-  //?
   double alpha = sqrt( (E+V0)/Physics::htc2om );
   double beta  = sqrt(     -E/Physics::htc2om );
   double d_alpha =  1./(2*sqrt( (E+V0) * Physics::htc2om ) );
@@ -42,11 +47,19 @@ double eig_odd_d(double E, double V0, double a)
     + d_beta*sin(alpha*a) + a*beta*cos(alpha*a)*d_alpha;
 }
 
-  
 
-  
+double alpha(double E, double V0)
+{
+  return sqrt( (E+V0)/Physics::htc2om );
+}
 
-double V0, a;
+double beta(double E)
+{
+  return sqrt(     -E/Physics::htc2om );
+}
+
+
+double E, V0, a;
 
 
 double eig_even_fix(double E)
@@ -70,6 +83,65 @@ double eig_odd_d_fix(double E)
 }
 
 
+
+double psi(double x)
+{
+  if( (x<-a) or (x>a) ) return cos( alpha(E,V0) * exp(beta(E)*(a-x)) );
+  else if ( (x>-a) and (x<a) ) return cos( alpha(E,V0) *x );
+}
+
+double mod_psi(double x)
+{
+  return psi(x)*psi(x);
+}
+
+				 
+  
+
+/*
+double X_inside(double x)
+{
+  return cos(alpha(E,V0)*x)*cos(alpha(E,V0)*x);
+}
+  
+double I_inside()
+{
+  return quad(X_inside, 0, a, 0.000001, 'g');
+}
+
+double X_outside(double x)
+{
+  return exp(-2*beta(E)*x);
+}
+
+double I_outside()
+{
+  return quad(X_outside, a, 10, 0.000001, 'g');
+}
+
+double K_AB()
+{
+  return pow( cos(alpha(E,V0)*a)*exp(beta(E)*a), 2 );
+} 
+*/
+
+
+	
+double f_dot_g(double (*f)(double),double (*g)(double),double x)
+{
+  return f(x)*g(x);
+}
+
+double f_squared(double(*f)(double),double x)
+{
+  return f_dot_g(f, f, x);
+}
+		
+
+double trial(double x)
+{
+  return x*x - x*x*x*x;
+}
 
 int main()
 {
@@ -103,6 +175,15 @@ int main()
 
   double x1e, x2e, x1o, x2o;
 
+  double NORM;
+  string fileprefix = "data_eigen_";
+  stringstream sstring;
+  string filename;
+  string extension = ".dat";
+  int E_counter = 0;
+  char E_char;
+  fstream outfile;
+  
   for(int j=0; j<n_division; j++){
     //EVEN
     x1e = -V0 + (j)   * dx;  
@@ -120,8 +201,33 @@ int main()
       
       if(tot_fail == 0){
 	cerr << "An EVEN eigenvalue is in \n#### ";
-	cout <<  fixed << setprecision(9) <<  x_zero << endl;
-      } 
+	cout << fixed << setprecision(9) <<  x_zero << endl;
+
+	E = x_zero;
+	NORM = quad(mod_psi,-10,10,0.001,'g');
+
+	
+	E_counter++;
+	E_char = char (E_counter);
+	sstring.flush();
+	sstring << fileprefix << E_counter << extension;
+	cerr << sstring.str() << endl;
+	filename = sstring.str();
+	outfile.open(filename.c_str(),fstream::out);
+	for(int i=0; i<1000; i++){
+	  outfile <<  double(i)/100. << " " << psi(double(i)/100.)
+		     << endl; 
+	}
+	outfile.close();
+
+
+	  
+      }
+
+
+      
+      
+      
     }
     ////////////////////////////////
     
@@ -147,11 +253,8 @@ int main()
   }
 
 
+
   
-
-
-
-
 
 
 
