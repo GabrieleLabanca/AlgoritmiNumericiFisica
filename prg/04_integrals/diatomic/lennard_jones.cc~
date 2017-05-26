@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cmath>
+
+#include "quadrature.h"
+#include "phys_constants.h"
+
+
+void plot( double (*f)(double x))
+{
+  double y;
+  for(int i=0; i<100; i++){
+    y = i/100.;
+    cout << y << " " << f_lennard_jones(y) << " " << d_f_lennard_jones(y) << endl;
+  }
+  return;
+}
+  
+
+double eps; // eps = E/u0
+double f_lennard_jones(double x) // x= R/a
+{
+  double t = x*x*x*x*x*x;
+  return eps - 4.*( 1./t - 1 )/t;
+}
+
+double d_f_lennard_jones(double x)
+{
+  double t6 = x*x*x*x*x*x;
+  double t7 = x*t;
+  return -24.*(1. - 2./t6)/t7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+  cerr << "Insert epsilon:\n";
+  cin >> eps;
+
+  
+
+
+
+
+
+
+
+
+  return 0;
+}

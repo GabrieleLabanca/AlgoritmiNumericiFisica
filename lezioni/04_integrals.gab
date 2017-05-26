@@ -56,6 +56,58 @@ calcolo delle autofunzioni: impongo che siano ortogonali e normalizzate a 1
 \psi_{III}(x) = B e^{-\beta x}
 
 
+[MOLECOLA BIATOMICA]
+eccitazioni:
+_ sulle orbite elettroniche 1eV
+_ vibrazionale 0.1eV
+_ rotazionale 0.01eV
+\\Born-Oppenheimer\\ approx: 3 hamiltoniane indipendenti
+
+[Vibrazionale]
+H = p^2/2\mu + V(q)
+q distanza tra atomi
+\mu = massa ridotta degli atomi
+V ha un minimo:
+_ a grandi distanze ~VanderWaals=1/r^6
+_ a piccole distanze principio di Pauli
+Schroedinger: h^2 d^2/dq^2 psi(q) + 2\mu (E-V(q))psi(q) = 0
+P^2(q) := 2\mu(E-V(q))
+hbar^2 d^2/dq^2 psi(q) + P^2(q) psi(q) = 0
+cerchiamo psi(q) = exp(i\phi(q))
+si trova \phi(q) = \int^q P(q) dq
+=> // \psi(q) = exp(i/\hbar \int^q P(q) dq // equazione dell'ICONALE
+voglio un solo valore per \psi: applico approx di \\Bohr-Sommerfeld\\:
+i/\hbar\intcircolare P(q)dq = 2\pi (n+1/2) 
+(1/2 e' fattore di Lande', deriva dal comportamento all'origine)
+
+\\potenziale di Lennard-Jones\\
+u(R) = 4 u_0 { (a/R)^12 - (a/R)^6 }
+u_0 legato all'energia di ionizzazione della molecola
+u(R) = u_0 f(a/R)
+S(E) := 1/h \intciclico P(R)dR = 2\pi (n+1/2) 
+      = 2 \int_R1^R2 sqrt(2\mu /h^2 u_0 (E/u_0 - f(a/R)))
+x = R/a;  epsilon = E/u_0; gamma = sqrt{ 2\mu u_0 a^2 / h^2}
+x_i sono gli zeri
+S(epsilon) = 2 gamma \int_x1^x2 sqrt{epsilon - f(x)} dx
+Devo [risolvere] S(epsilon) - 2\pi(n+1/2) = 0
+H2 gamma =  22
+HD       =  25
+O2       = 150
+
+N.B. per L-J: primo zero tra 1 e radice sesta di 2, la seconda tra radice sesta di 2 e Rmax (impongo discontinuita')
+MA //fermare l'intervallo 0.001 prima/dopo del minimo!!//
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
