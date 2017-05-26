@@ -1,3 +1,10 @@
+/* TODO:
+ * function parabolic: well centered!
+ * d_f_parabolic
+ * cfr. results LJ-parabolic
+ */  
+
+
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -23,14 +30,17 @@ double d_f_lennard_jones(double x)
   return -24.*(1. - 2./t6)/t7;
 }
 
-double sqrt_f_lennard_jones(double x)
+
+
+double sqrt_f(double(*V)(double x))
 {
-  return sqrt(f_lennard_jones(x));
+  return sqrt(V(x));
 }
+
 int n;
 double gam;
 double xacc, yacc, quad_precision;
-double action(double energy)
+double action(double energy, double (*V)(double x), double (*dV)(double x))
 {
   eps = energy;
   int ifail;
@@ -44,20 +54,27 @@ double action(double energy)
   // first half
   x1 = 1;
   x2 = pow(2.,1./6.) - 0.001;
-  z1 = zero_bisection(f_lennard_jones,x1,x2,.001,.001,ifail);
-  z1 = zero_newton(f_lennard_jones,d_f_lennard_jones,x1,x2,z1,xacc,yacc,ifail);
+  z1 = zero_bisection(V,x1,x2,.001,.001,ifail);
+  z1 = zero_newton(V,dV,x1,x2,z1,xacc,yacc,ifail);
 
   //second half
   x1 = pow(2.,1./6.) + 0.001;
   x2 = x_MAX;
-  z2 = zero_bisection(f_lennard_jones,x1,x2,.001,.001,ifail);
-  z2 = zero_newton(f_lennard_jones,d_f_lennard_jones,x1,x2,z2,xacc,yacc,ifail);
+  z2 = zero_bisection(V,x1,x2,.001,.001,ifail);
+  z2 = zero_newton(V,dV,x1,x2,z2,xacc,yacc,ifail);
   //if(ifail == 0) cerr << "ZERO FOUND" << endl;
   // cerr << "zeros: "
   //     << setprecision(9) <<  z1 << " ; "
   //     << setprecision(9) <<  z2 << endl;
-  return 2*gam*quad(sqrt_f_lennard_jones,z1,z2,quad_precision,'g') - 2*M_PI*(n+0.5); 
+  return 2*gam*quad(sqrt_f(V),z1,z2,quad_precision,'g') - 2*M_PI*(n+0.5); 
 }
+
+double action_LJ(double E)
+{
+  return action(E,V,dV);
+}
+
+double action_par
 
 int main()
 {
