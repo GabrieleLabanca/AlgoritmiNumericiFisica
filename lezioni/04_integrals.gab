@@ -94,7 +94,7 @@ H2 gamma =  22
 HD       =  25
 O2       = 150
 
-N.B. per L-J: primo zero tra 1 e radice sesta di 2, la seconda tra radice sesta di 2 e Rmax (impongo discontinuita')
+N.B. per L-J: il minimo e' a radicesesta di 2; primo zero tra 1 e radice sesta di 2, la seconda tra radice sesta di 2 e Rmax (impongo discontinuita')
 MA //fermare l'intervallo 0.001 prima/dopo del minimo!!//
 
 
