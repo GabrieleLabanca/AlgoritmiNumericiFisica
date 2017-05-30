@@ -1,0 +1,31 @@
+[EQUAZIONI DIFFERENZIALI]
+dyi/dt=fi(y1...yN,t)
+_condizioni iniziali yi0 = yi(t=0)
+_condizioni al contorno
+Si riduce a sistema di eq. del primo ordine
+es. Newton dz/dt=P/m, dP/dt=F(z)
+
+[EULER]
+y' = f(t); y0
+formula forward per la derivata:
+(y_n+1 - y_n)/h = f(yn,tn)
+\\y_{n+1} = y_n + h f(y_n,t_n) + O(h^2)\\
+//Errore locale h^2//
+N*h^2 ~ 1/h*h^2
+//Errore globale h// convergenza lineare
+[singolarita']
+Se yn si annulla, non ne esce! Puo' dipendere dalla scelta di h
+
+Per verificare la bonta' del risultato, si puo' fare un \\forward-backward\\
+
+[Balistica]
+ma=F+R, F=-mgz, R=-1/2 D\rho Av^2 \hat{v} 
+
+rho_aria = 1.22 kg/m3    D=0.35
+tipo              | M          | A            | diam
+Pallina da golf   | 0.046 kg   | 1.4 10e-3 m2 | 42.67 mm
+Palla da baseball | 0.147 kg   | 4.2 10e-3 m2  
+Grandine          | 5 10e-4 kg | 8 10e-5 m2
+
+
+

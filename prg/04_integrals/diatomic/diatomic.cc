@@ -80,12 +80,14 @@ double action(double energy)//, double (*V)(double x), double (*dV)(double x))
   return 2*gam*quad(sqrt_lennard_jones,z1,z2,quad_precision,'g') - 2*M_PI*(n+0.5); 
 }
 
+double k;
 double parabola_eigenvalues(int q)
 {
   double x0 = pow(2.,1./6.);
   double x8 = x0*x0*x0*x0 * x0*x0*x0*x0;
   double x14 = x8 * x0*x0 * x0*x0 * x0*x0;
-  return -1 + (q+0.5)*2*sqrt(2)/gam*sqrt(6)*sqrt( 26/x14 - 7/x8 );
+  k = 2*sqrt(2)/gam*sqrt(6)*sqrt( 26/x14 - 7/x8 );
+  return -1 + (q+0.5)*k;
 }
 
 
@@ -100,6 +102,7 @@ int main()
   
   cerr << "Insert gamma:\n";
   cin >> gam;
+
   cerr << setw(5) << left << "n"
        << setw(15) << left << "zero"
        << setw(15) << left << "harmonic"
@@ -107,7 +110,7 @@ int main()
        << endl;
    for(n=0;n<9;n++){ // wkb method
     int efail;
-    double e1, e2, e0;
+    double e1, e2, e0, epar;
     double dE = 0.01;
     int N_steps = 1./dE;
     for(int en=0.; en<N_steps-1; en++){
@@ -125,6 +128,14 @@ int main()
       }
     }
   }
+
+   cerr << "k= " << k << endl;
+
+   int icszero = pow(2.,1./6.);
+   for(int i=0; i<100; i++){
+     double t = i/20.;
+     cout << t << " " << f_lennard_jones(t) << " " << -1 + k/2.*(t-icszero)*(t-icszero) << endl;
+   }
 
   return 0;
 }

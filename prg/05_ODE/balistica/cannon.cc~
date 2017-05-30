@@ -1,0 +1,66 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <fstream>
+
+using namespace std;
+
+const double rho_air = 1.22; //kg/m^3
+const double D = 0.35 //constant of turbolent motion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+  double y, v, theta;
+  cerr << "Insert initial y, v, theta:\n";
+  cin >> y, v, theta;
+  double x = 0;
+  double vx = v*cos(theta);
+  double vy = v*sin(theta);
+    
+  double m, A;
+  cerr << "Insert m, M:\n";
+  cin >> m >> A;
+ 
+
+  int N;
+  double dt, v, vy0;
+  for(int i=0; i<N; i++){
+    cout
+      << setw(10) << left << i
+      << setw(10) << left << x
+      << setw(10) << left << y
+      << setw(10) << left << vx
+      << setw(10) << left << vy
+      << endl;
+    vy0 = vy;
+    v = sqrt( vx0*vx0 + vy0*vy0 );
+    vy = vy0 + ( - g*y0 - 1./(2*m)*D*rho_air*A*v*vy0 ) * dt;
+    x = x + vx * dt;
+    y = y + vy0 * dt;
+    vx = vx + ( - 1./(2*m)*D*rho_air*A*v*vx ) * dt;
+  }
+  
+  
+
+
+
+  return 0;
+}
