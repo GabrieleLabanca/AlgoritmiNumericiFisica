@@ -1,5 +1,6 @@
-#Insert initial y, v, theta (deg):
-#Insert m, M:
-g++ cannon.cc -o cannon; echo "10 40 90 0.1 0.4" | cannon > cannon.dat
+rm -f *.png
+
+#                            y v theta (deg) m A
+g++ cannon.cc -o cannon; echo "1.5 10 0.147 0.0042" | cannon > cannon.dat
 
 gnuplot plot_cannon.gp

@@ -1,7 +1,7 @@
 set terminal pngcairo
 load "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/prg/00/plot_data_style.gnu"
 
-#datafile 
+#datafile i*dt x y vx vy xf yf vxf vyf
 
 set output "trajectory.png"
 set xlabel "x(m)"

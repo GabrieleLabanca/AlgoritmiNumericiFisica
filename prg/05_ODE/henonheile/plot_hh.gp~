@@ -1,0 +1,5 @@
+set terminal pngcairo
+load "/usr/users/edu2016/gabriele.labanca/AlgoritmiNumericiFisica/prg/00/plot_data_style.gnu"
+
+set output "trajectory.png"
+plot "hh.dat" u 2:3 w l

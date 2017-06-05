@@ -18,7 +18,7 @@ int main()
   double x = 0;
   double vx = v*cos(theta);
   double vy = v*sin(theta);
-  cerr << sqrt(vx*vx+vy*vy) << endl;
+  //cerr << sqrt(vx*vx+vy*vy) << endl;
 
   double x_f = x;
   double y_f = y;
@@ -26,7 +26,7 @@ int main()
   double vy_f = vy;
   
   double m, A;
-  cerr << "Insert m, M:\n";
+  cerr << "Insert m, A:\n";
   cin >> m >> A;
  
   double dt, vy0, vy0_f;
@@ -36,6 +36,7 @@ int main()
   double mult = 1./(2*m)*D*rho_air*A;
 
   for(int i=0; i<N; i++){
+
     if(i%3==0){
       cout
 	<< setw(15) << left << i*dt
@@ -52,27 +53,22 @@ int main()
     
     vy0 = vy;
     v = sqrt( vx*vx + vy*vy );
-    /*
-      cerr << setw(15) << left << vx
-	 << setw(15) << left << vy
-      	 << setw(15) << left << v*v
-      	 << setw(15) << left << vx*vx+vy*vy
-	 << setw(15) << left << (v*v - vx*vx-vy*vy)
-	 << endl;
-    */
-    if((y+vy0*dt)>0 or i<10) vy += ( - g*y - mult*v*vy ) * dt;
+    if( i<10 or (y+vy0*dt)>0) vy = vy0 * ( - g - mult*v*vy ) * dt;
     else vy = - vy0;
     x = x + vx  * dt;
     y = y + vy0 * dt;
     vx += ( - 1./(2*m)*D*rho_air*A*v*vx ) * dt;
 
+
     vy0_f = vy_f;
     v = sqrt( vx_f*vx_f + vy_f*vy_f );
-    if((y_f+vy0_f*dt)>0 or i<10) vy_f = vy0_f - g*y * dt;
+    if((y_f+vy0_f*dt)>0 or i<10) vy_f = vy0_f - g * dt;
     else vy_f = -vy0_f;
     x_f = x_f + vx_f  * dt;
     y_f = y_f + vy0_f * dt;
-        
+    cout << vx << " " << vy << endl;
+    cout << vx_f << " " << vy_f << endl;
+
   }
    
   return 0;
