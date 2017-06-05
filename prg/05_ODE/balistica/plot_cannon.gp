@@ -15,16 +15,16 @@ set ylabel "velocity (m/s)"
 plot "cannon.dat" u 1:4 w l title "vx",\
      ""		  u 1:5 w l title "vy"
 
-set output "velocities_frictionless.png"
-set xlabel "time (s)"
-set ylabel "velocity (m/s)"
-plot "cannon.dat" u 1:8 w l title "vx",\
-     ""		  u 1:9 w l title "vy"
+#set output "velocities_frictionless.png"
+#set xlabel "time (s)"
+#set ylabel "velocity (m/s)"
+#plot "cannon.dat" u 1:8 w l title "vx",\
+#     ""		  u 1:9 w l title "vy"
 
-set output "pos_vel.png"
-set ylabel "m or m/s"
-set xlabel "time (s)"
-plot "cannon.dat" u 1:2 w l title "x",\
-     ""		  u 1:3 w l title "y",\
-     ""		  u 1:4 w l title "vx",\
-     ""		  u 1:5 w l title "vy"
+#set output "pos_vel.png"
+#set ylabel "m or m/s"
+#set xlabel "time (s)"
+#plot "cannon.dat" u 1:2 w l title "x",\
+#     ""		  u 1:3 w l title "y",\
+#     ""		  u 1:4 w l title "vx",\
+#     ""		  u 1:5 w l title "vy"

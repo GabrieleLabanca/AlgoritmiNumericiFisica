@@ -1,6 +1,6 @@
-rm -f *.png
+rm *.png
 
-#                            y v theta (deg) m A
-g++ cannon.cc -o cannon; echo "1.5 10 0.147 0.0042" | cannon > cannon.dat
+#                              y   v  theta(deg) m A
+g++ cannon.cc -o cannon; echo "1.5 20 45         0.147 0.01 " | cannon > cannon.dat
 
 gnuplot plot_cannon.gp

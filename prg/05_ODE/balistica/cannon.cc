@@ -24,14 +24,14 @@ int main()
   double y_f = y;
   double vx_f = vx;
   double vy_f = vy;
-  
+ 
   double m, A;
   cerr << "Insert m, A:\n";
   cin >> m >> A;
  
   double dt, vy0, vy0_f;
-  dt = .01;
-  int N = 1500;
+  dt = 0.001;
+  int N = 15000;
 
   double mult = 1./(2*m)*D*rho_air*A;
 
@@ -53,7 +53,8 @@ int main()
     
     vy0 = vy;
     v = sqrt( vx*vx + vy*vy );
-    if( i<10 or (y+vy0*dt)>0) vy = vy0 * ( - g - mult*v*vy ) * dt;
+
+    if( i<10 or (y+vy0*dt)>0) vy = vy0 + ( - g - mult*v*vy ) * dt;
     else vy = - vy0;
     x = x + vx  * dt;
     y = y + vy0 * dt;
@@ -66,8 +67,7 @@ int main()
     else vy_f = -vy0_f;
     x_f = x_f + vx_f  * dt;
     y_f = y_f + vy0_f * dt;
-    cout << vx << " " << vy << endl;
-    cout << vx_f << " " << vy_f << endl;
+ 
 
   }
    
