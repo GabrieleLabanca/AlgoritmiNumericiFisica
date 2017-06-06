@@ -43,6 +43,10 @@ int main()
   cin >> E >> X >> Y;
   double t=0.;
   double  px = sqrt(2*E - py*py - 2 *( X*X/2. + Y*Y/2.  + X*X*Y - Y*Y*Y/3) );
+  if(px<0){
+    cerr << "INVALID INITIAL CONDITIONS" << endl;
+    return 1;
+  }
   cerr << "px = " << px << endl;
     
   fstream file_zerox ("y_py.dat",fstream::out);

@@ -77,18 +77,41 @@ ma energia si conserva: sono in un manifold 3D
 idea di Poincare': piano x=0 taglia il manifold
 voglio vedere pattern nel piano y,py: \\sezione di Poincare'\\
 
-
-
 guardo dove x_i*x_{i+1} <0
 
 
+[TEOREMA DI HAMILTON-JACOBI]
+H(x,px,y,py)=E integrale primo
+ho bisogno di un altro integrale primo perche' il sistema sia completamente integrabile -> posso avere x(t), y(t) 
+traiettorie su un toro di raggi theta, H
+Posso avere traiettorie chiuse: punti fissi sul toro
+
+Henon-Heiles non e' completamente integrabile, ma ho H.
+Invento un'altra condizione, che //non e' costante del moto// ma trovo manifold: scelgo x=0 e guardo y,py
+
+Sistema caotico: tutto il piano viene coperto
 
 
 
 
+[SCHROEDINGER]
+d^2 psi/ dx^2 + 2m/hbar^2 (E-V(x)) psi(x) = 0
+Devo avere funzioni quadrato integrabili integr|psi|^2 = 1
+cioe' la funzione deve decadere a zero abbastanza rapidamente
+Specifico V(x) = ax^2 + b x^4
+a = 0.5  eV angstrom^-2
+b = 0.25 eV angstrom^-4
+potenziale armonico
+scelgo \\psi(-x_min)=0\\
+e psi'=epsilon (~10^-6)
 
-
-
+La funzione ovviamente diverge, non essendo autovalore: per trovare gli autovalori si cercano i punti in cui la divergenza passa da +inf a -inf
+Costruisco funzioni d'onda psi_up e psi_down, che partono con condizione di azzeramento a +/-xmin
+Voglio che psi_up=psi_down in x_match e idem per le derivate: quello sara' l'autovalore
+Cioe' psi_u(x_{m-1}-psi_u(x_m) = psi_d(x_{m-1}-psi_d(x_m) per la derivata
+=> psi_u(x_{m-1} = psi_d(x_{m-1}
+ma conviene dividerla per il modulo di |psi_u(x_m)|^2 per avere numeri non troppo piccoli/grando
+x_match va scelto in corrispondenza del turning point ~ massimo della psi
 
 
 

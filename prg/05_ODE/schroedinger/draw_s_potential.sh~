@@ -1,0 +1,4 @@
+g++ s_potential.cc -o s_pot
+echo "10 0.1 0.2" | s_pot > s_pot.dat
+
+gnuplot plot_s.gp

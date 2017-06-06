@@ -1,0 +1,46 @@
+#include <iostream>
+#include <iomanip>
+
+
+
+double alpha;
+double beta;
+double xmin;
+double V(double x)
+{
+  return alpha*x*x + beta*x*x*x*x; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+int main()
+{
+  cerr << V(10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return 0;
+}
