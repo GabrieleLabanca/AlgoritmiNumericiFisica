@@ -22,6 +22,7 @@ void poorman_bracketing(double (*f)(double x), double &x1, double &x2, int &ifai
     fprod = f1*f2;
     if(fprod < 0){
       ifail = 0;
+      x2 += h;
       break;
     }
  
@@ -29,7 +30,7 @@ void poorman_bracketing(double (*f)(double x), double &x1, double &x2, int &ifai
     x1 = x2;
     f1 = f2;
   }
-  x2 += h;
+  //x2 += h;
   return;
 }
 
