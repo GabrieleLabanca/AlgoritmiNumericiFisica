@@ -95,7 +95,7 @@ Sistema caotico: tutto il piano viene coperto
 
 
 [SCHROEDINGER]
-d^2 psi/ dx^2 + 2m/hbar^2 (E-V(x)) psi(x) = 0
+d^2 psi/ dx^2 + 2m/hbar^2 (V(x)-E) psi(x) = 0
 Devo avere funzioni quadrato integrabili integr|psi|^2 = 1
 cioe' la funzione deve decadere a zero abbastanza rapidamente
 Specifico V(x) = ax^2 + b x^4
@@ -112,6 +112,8 @@ Cioe' psi_u(x_{m-1}-psi_u(x_m) = psi_d(x_{m-1}-psi_d(x_m) per la derivata
 => psi_u(x_{m-1} = psi_d(x_{m-1}
 ma conviene dividerla per il modulo di |psi_u(x_m)|^2 per avere numeri non troppo piccoli/grando
 x_match va scelto in corrispondenza del turning point ~ massimo della psi
+
+//bisogna lavorare sugli indici!! NO turning-point su floating numbers//
 
 
 
