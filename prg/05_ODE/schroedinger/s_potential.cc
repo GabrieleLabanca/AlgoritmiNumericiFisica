@@ -152,18 +152,20 @@ int main()
   }
 
   for(int i=0; i<100; i++){
-    double x1 = i*0.1;
+    double x1 =  i*0.1;
     double x2 = x1 + 0.1;
     int ifail;
     //cerr << "pre bracketing " << x1 << " " << x2 << endl;
     poorman_bracketing(dispE,x1,x2,ifail);
-    //cerr << "bracketing " << x1 << " " << x2 << endl;
-    //if(ifail == 0){
-      cerr << "zero in " << zero_regulafalsi(dispE,x1,x2,0.00001,0.001,ifail)
-	   << endl;
+    if (ifail == 0) cerr <<"FOUND" << endl;
+    cerr << "bracketing " << x1 << " " << x2 << endl;
+    /*if(ifail == 0){
+      double zerotemp =  zero_regulafalsi(dispE,x1,x2,0.00001,0.001,ifail);
+      cerr << "zero in " << zerotemp << endl;
       if(ifail == 1) cerr << "ERROR" << endl;
-      //}
-  }
+    }
+    */
+   }
   
   
   return 0;
